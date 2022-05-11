@@ -9,12 +9,12 @@ namespace IhaveNoIdeaWhatImDoingButItWorks
     {
         UserContext context;
         User ElUsero;
-        
+
         [TestInitialize]
         public void Setup()
         {
-            var __context = new ExamDBContext();
-            var _context = new UserContext(__context);
+            var context = new ExamDBContext();
+            var _context = new UserContext(context);
             this.context = _context;
 
             User user = new User(0, "Spas", "Tzilkov", 21, "spastz", "123456", "spas@poshta.bg");
@@ -32,13 +32,13 @@ namespace IhaveNoIdeaWhatImDoingButItWorks
 
         [TestMethod]
         public void CreateTest()
-        {                  
+        {
             //Asserting 
             Assert.IsNotNull(context.Read(0));
         }
         [TestMethod]
         public void ReadTest()
-        {          
+        {
             //Doing
             var data = context.Read(0);
 
@@ -57,10 +57,10 @@ namespace IhaveNoIdeaWhatImDoingButItWorks
         }
         [TestMethod]
         public void DeleteTest()
-        {     
+        {
             //Doing 
             context.Delete(0);
-            
+
             Assert.IsNull(context.Read(0));
         }
         [TestMethod]
